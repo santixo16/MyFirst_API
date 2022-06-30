@@ -1,11 +1,15 @@
 /* Importing the express module. */
 const express = require('express')
+const mongoose = require('mongoose')
 /* Importing the user.controller.js file. */
 const user = require('./user.controller')
 /* Creating an instance of the express module. */
 const app = express()
 //indicamos en qué puerto queremos ejecutar la app
 const port = 3000
+
+app.use(express.json())
+mongoose.connect('mongodb+srv://santixo:messias1234@firstcluster.u1paaiz.mongodb.net/miapp?retryWrites=true&w=majority')
 
 //le indicamos a express la ruta del navegador que tenemos que escribir para que ejecute la funcion que le vamos a pasar como segundo argumento
 app.get('/', user.list)
